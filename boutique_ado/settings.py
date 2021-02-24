@@ -26,7 +26,7 @@ SECRET_KEY = 'p@ei#69*b*zz3u4yie-$()@cy^l(+x9&@6ypx+r0lm(3%_9hr7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['jtwy23-boutique-ado.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -119,16 +119,17 @@ WSGI_APPLICATION = 'boutique_ado.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse('postgres://jdufnghlmczimk:3ef5efb18995de3d057cd9f8d23b5c501265ba1d0d5e189a62fe962c95b69e83@ec2-54-155-87-214.eu-west-1.compute.amazonaws.com:5432/d5h0pjqndjf2he')
     }
-}
-
-# DATABASES = {
-#     'default': dj_database_url.parse('postgres://jdufnghlmczimk:3ef5efb18995de3d057cd9f8d23b5c501265ba1d0d5e189a62fe962c95b69e83@ec2-54-155-87-214.eu-west-1.compute.amazonaws.com:5432/d5h0pjqndjf2he')
-# }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation

@@ -8,6 +8,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import dj_database_url
 
 if os.path.exists('env.py'):
     import env
@@ -124,6 +125,10 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': dj_database_url.parse('postgres://jdufnghlmczimk:3ef5efb18995de3d057cd9f8d23b5c501265ba1d0d5e189a62fe962c95b69e83@ec2-54-155-87-214.eu-west-1.compute.amazonaws.com:5432/d5h0pjqndjf2he')
+# }
 
 
 # Password validation
